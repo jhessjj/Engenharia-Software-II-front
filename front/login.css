@@ -1,0 +1,31 @@
+@charset "utf-8";
+
+body{
+    background-color: rgba(143, 119, 164, 0.647);
+}
+
+h1{
+    text-align: center;
+    color: #333;
+    margin-top: 50px;
+    color:black;
+}
+.login-form{
+    width: 300px;
+    margin: 100px auto;
+    padding: 30px;
+    background-color: transparent;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+img{
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+    height: auto;
+
+
+}
+
