@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
+
 body {
-    margin: 0;
+  margin: 0;
 }
 
 .container {
@@ -15,8 +17,23 @@ body {
     align-items: center;
     background-color: rgba(143, 119, 164, 0.647);
     height: 100vh;
+    flex-direction: column;
 
 }
+
+.container-dir h2 {
+    color: white;
+    font-size: 100px;
+    margin-bottom: 20px;
+    font-family: 'Dancing Script', cursive;
+}
+.container-esq h2 {
+    color: white;
+    font-size: 40px;
+    margin-bottom: 20px;
+    font-family: 'Dancing Script', cursive;
+}
+    
 
 .container-esq {
     flex: 1;
