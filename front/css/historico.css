@@ -1,0 +1,73 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background-color: #f9f7fb;
+    color: #b295d4;
+}
+
+header {
+    background-color: #bca4e3;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+nav a.ativo {
+    text-decoration: underline;
+}
+
+main {
+    padding: 30px;
+}
+
+.historico-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+}
+
+.livro {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-bottom: 1px solid #e1d8f0;
+    padding: 15px 0;
+}
+
+.livro img {
+    width: 100px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.info h3 {
+    margin: 0;
+    color: #654ea3;
+}
+
+.status {
+    font-weight: bold;
+}
+
+.status.devolvido {
+    color: #7d4fc7;
+}
+
+footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #bca4e3;
+    color: white;
+    margin-top: 30px;
+}
