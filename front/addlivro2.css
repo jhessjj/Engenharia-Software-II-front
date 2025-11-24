@@ -1,0 +1,144 @@
+body{
+  font-family: cursive;
+  background: #f4f1fa;
+  margin: 0;
+  padding: 0;
+}
+
+
+
+    header{
+      color: #fff;
+      text-align: center;
+      font-size: 1.5rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      background-color: #bca4e3;
+      padding: 20px;
+      text-align: center;
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+
+    }
+     header h1{
+      margin: 0;
+      font-size: 2.5rem;
+      text-shadow:0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    nav a{
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 500;
+    margin-left: 20px;
+    
+   
+}
+
+nav a:hover{
+    text-decoration: underline;
+    color: #2c3e50;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 85vh;
+}
+
+
+.formulario{
+  background: #fff;
+  padding: 30px 35px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+.formulario:hover {
+  transform: scale(1.02);
+}
+
+.formulario h3 {
+  text-align: center;
+  color: #9b59b6;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+/* ---------- CAMPOS ---------- */
+.campo {
+  display: flex;
+  flex-direction: column;
+}
+
+.campo label {
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 5px;
+  font-size: 0.95rem;
+}
+
+.campo input,
+.campo select {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+.campo input:focus,
+.campo select:focus {
+  border-color: #9b59b6;
+  box-shadow: 0 0 5px rgba(155, 89, 182, 0.4);
+  outline: none;
+}
+
+/* ---------- BOTÕES ---------- */
+.botoes-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.salvar {
+  background: #27ae60;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.salvar:hover {
+  background: #219150;
+  transform: scale(1.05);
+}
+
+.cancelar {
+  background: #9b59b6;
+  color: white;
+  text-decoration: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+.cancelar:hover {
+  background: #7d3cb5;
+  transform: scale(1.05);
+}
+
+
