@@ -19,29 +19,29 @@
   </header>
 
   <main class="form-container">
-    <form class="formulario">
+    <form class="formulario" id="formAddLivro">
       <h3>Adicionar Livro</h3>
 
       <div class="campo">
         <label for="titulo">Título do Livro</label>
-        <input type="text" id="titulo" placeholder="Ex: O Pequeno Príncipe">
+        <input type="text" id="titulo" placeholder="Ex: O Pequeno Príncipe" required>
       </div>
 
       <div class="campo">
         <label for="local">Localização</label>
-        <input type="text" id="local" placeholder="Ex: Picos - PI">
+        <input type="text" id="local" placeholder="Ex: Picos - PI" required>
       </div>
 
       <div class="campo">
         <label for="telefone">Telefone para Contato</label>
-        <input type="text" id="telefone" placeholder="(XX) XXXXX-XXXX">
+        <input type="text" id="telefone" placeholder="(XX) XXXXX-XXXX" required>
       </div>
 
       <div class="campo">
         <label for="tipo">Tipo</label>
         <select id="tipo">
-          <option value="Empréstimo">Empréstimo</option>
-          <option value="Troca">Troca</option>
+          <option value="emprestimo">Empréstimo</option>
+          <option value="troca">Troca</option>
         </select>
       </div>
 

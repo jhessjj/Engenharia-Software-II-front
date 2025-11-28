@@ -10,16 +10,16 @@
   <div class="container">
     
     <div class="lado-esquerdo">
-  <hr/>
-     
+      <hr/> 
       <h2>Faça seu login e descubra<br>as possibilidades do<br>mundo da leitura</h2>
 
       <div class="login-box">
         <h3>Login</h3>
-        <form>
-          <input type="text" placeholder="Usuário" required>
-          <input type="password" placeholder="Senha" required>
-         <a href="home.html"> <button> Entrar</button></a> 
+        <form id="formLogin">
+          <input type="text" id="user" placeholder="Usuário" required>
+          <input type="password" id="senha" placeholder="Senha" required>
+          
+          <button type="submit">Entrar</button>
         </form>
         <p>Não é cadastrado? <a href="cadastro.html">Crie sua conta</a></p>
       </div>
@@ -31,5 +31,7 @@
     </div>
 
   </div>
+  
+  <script src="login.js"></script>
 </body>
 </html>

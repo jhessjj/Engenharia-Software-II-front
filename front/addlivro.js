@@ -1,113 +1,67 @@
-// seleciona o container principal
-const listaLivros = document.getElementById('listaLivros');
+document.addEventListener('DOMContentLoaded', async () => {
+    // 1. Elementos do HTML
+    const listaLivros = document.getElementById('listaLivros');
+    const btnAdd = document.getElementById('btnAdd');
 
-// carrega os livros salvos no localStorage ao abrir a pag
-document.addEventListener('DOMContentLoaded', () => {
-  const livrosSalvos = JSON.parse(localStorage.getItem('meusLivros')) || [];
-  if (livrosSalvos.length > 0) {
-    listaLivros.innerHTML = ''; 
-    livrosSalvos.forEach(livro => criarCardLivro(livro));
-  } else {
-    listaLivros.innerHTML = '<p>Nenhum livro cadastrado ainda 📚</p>';
-  }
+    // 2. Verifica se tem usuário logado
+    const idUsuario = localStorage.getItem('userId');
+
+    if (!idUsuario) {
+        alert('Você precisa fazer login!');
+        window.location.href = 'login.html';
+        return;
+    }
+
+    // 3. Configura o botão de Adicionar (+)
+    btnAdd.addEventListener('click', () => {
+        window.location.href = 'addlivro2.html'; // Vai para o formulário
+    });
+
+    // 4. Busca os livros no Backend
+    try {
+        const response = await fetch(`http://localhost:3000/livros/usuario/${idUsuario}`);
+        const livros = await response.json();
+
+        // Limpa a lista antes de preencher (para evitar duplicatas se recarregar)
+        listaLivros.innerHTML = '';
+
+        if (livros.length === 0) {
+            listaLivros.innerHTML = '<p style="text-align:center; color: white;">Você ainda não cadastrou nenhum livro.</p>';
+            return;
+        }
+
+        // 5. Cria os cards para cada livro
+        livros.forEach(livro => {
+            const card = document.createElement('div');
+            card.className = 'card-livro'; // Classe para estilizar no CSS
+
+            // Aqui montamos o HTML de cada livro
+            card.innerHTML = `
+                <div class="info-livro">
+                    <h3>${livro.titulo}</h3>
+                    <p><strong>Local:</strong> ${livro.localizacao}</p>
+                    <p><strong>Tipo:</strong> ${livro.tipo.toUpperCase()}</p>
+                    <p><strong>Status:</strong> Disponível</p>
+                </div>
+                <div class="acoes-livro">
+                    <button class="btn-delete" onclick="deletarLivro(${livro.id})">🗑️</button>
+                </div>
+            `;
+
+            listaLivros.appendChild(card);
+        });
+
+    } catch (error) {
+        console.error('Erro ao buscar livros:', error);
+        listaLivros.innerHTML = '<p>Erro ao carregar seus livros.</p>';
+    }
 });
 
-// funcao para criar o card de livro 
-function criarCardLivro(livro) {
-  const div = document.createElement('div');
-  div.classList.add('livro');
-
-  div.innerHTML = `
-    <img src="${livro.imagem}" alt="${livro.titulo}">
-    <h4>${livro.titulo}</h4>
-    <p><strong>Tipo:</strong> ${livro.tipo}</p>
-    <p><strong>Localização:</strong> ${livro.localizacao}</p>
-    <p><strong>Contato:</strong> ${livro.contato}</p>
-    <div class="botoes">
-      <button class="editar">Editar</button>
-      <button class="remover">Remover</button>
-      <button class="emprestado">Emprestado</button>
-      <button class="trocado">Trocado</button>
-      <button class="devolvido">Devolvido</button>
-    </div>
-  `;
-
-  // botoes basicos
-  div.querySelector('.remover').addEventListener('click', () => removerLivro(livro.titulo));
-  div.querySelector('.editar').addEventListener('click', () => editarLivro(livro.titulo));
-
-  // botaes de açoes (historico)
-  div.querySelector('.emprestado').addEventListener('click', () => registrarAcao(livro, 'emprestado'));
-  div.querySelector('.trocado').addEventListener('click', () => registrarAcao(livro, 'trocado'));
-  div.querySelector('.devolvido').addEventListener('click', () => registrarAcao(livro, 'devolvido'));
-
-
-  const btnEmprestado = div.querySelector('.emprestado');
-const btnTrocado = div.querySelector('.trocado');
-const btnDevolvido = div.querySelector('.devolvido');
-
-// cores botoes
-btnEmprestado.style.backgroundColor = '#3498db';
-btnEmprestado.style.color = 'white';
-
-btnTrocado.style.backgroundColor = '#f39c12';
-btnTrocado.style.color = 'white';
-
-btnDevolvido.style.backgroundColor = '#ae276fff';
-btnDevolvido.style.color = 'white';
-
-  listaLivros.appendChild(div);
+// Função extra para deletar (opcional por enquanto)
+function deletarLivro(idLivro) {
+    if(confirm("Tem certeza que deseja remover este livro?")) {
+        // Futuramente você implementa a chamada DELETE pro backend aqui
+        console.log("Deletar livro ID:", idLivro);
+        alert("Função de deletar será implementada em breve!");
+    }
 }
-
-// funçao para remover livro
-function removerLivro(titulo) {
-  if (confirm(`Deseja remover o livro "${titulo}"?`)) {
-    let livros = JSON.parse(localStorage.getItem('meusLivros')) || [];
-    livros = livros.filter(l => l.titulo !== titulo);
-    localStorage.setItem('meusLivros', JSON.stringify(livros));
-    location.reload();
-  }
-}
-
-// funçao para editar (abre prompt)
-function editarLivro(titulo) {
-  let livros = JSON.parse(localStorage.getItem('meusLivros')) || [];
-  const livro = livros.find(l => l.titulo === titulo);
-
-  if (!livro) return alert('Livro não encontrado.');
-
-  const novoTitulo = prompt('Novo título:', livro.titulo) || livro.titulo;
-  const novoTipo = prompt('Novo tipo (Troca / Empréstimo):', livro.tipo) || livro.tipo;
-  const novaLocalizacao = prompt('Nova localização:', livro.localizacao) || livro.localizacao;
-  const novoContato = prompt('Novo contato:', livro.contato) || livro.contato;
-
-  livro.titulo = novoTitulo;
-  livro.tipo = novoTipo;
-  livro.localizacao = novaLocalizacao;
-  livro.contato = novoContato;
-
-  localStorage.setItem('meusLivros', JSON.stringify(livros));
-  location.reload();
-}
-
-// historico acoes
-function registrarAcao(livro, acao) {
-  const historico = JSON.parse(localStorage.getItem('historicoLivros')) || [];
-
-  const registro = {
-    titulo: livro.titulo,
-    acao: acao,
-    data: new Date().toLocaleString('pt-BR')
-  };
-
-  historico.push(registro);
-  localStorage.setItem('historicoLivros', JSON.stringify(historico));
-
-  alert(`✅ Livro "${livro.titulo}" marcado como ${acao}.`);
-}
-
-// botao de adicionar
-const botaoAdd = document.getElementById('btnAdd');
-botaoAdd.addEventListener('click', () => {
-  window.location.href = 'addlivro2.html';
-});

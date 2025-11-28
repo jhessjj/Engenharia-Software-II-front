@@ -1,21 +1,19 @@
 const express = require('express');
 const cors = require('cors');
-const db = require('./db'); // importa o banco
+
+// Importa as rotas
+const authRoutes = require('./routes/authRoutes');
+const livrosRoutes = require('./routes/livrosRoutes');         // <--- NOVO
+const transacoesRoutes = require('./routes/transacoesRoutes'); // <--- NOVO
 
 const app = express();
 
-app.use(express.json());
 app.use(cors());
+app.use(express.json());
 
-// rota de teste
-app.get('/', (req, res) => {
-  db.query('SELECT NOW() AS hora', (err, results) => {
-    if (err) {
-      res.status(500).json({ erro: err });
-      return;
-    }
-    res.json({ message: "API funcionando!", banco: results[0] });
-  });
-});
+// Define os prefixos das rotas
+app.use('/auth', authRoutes);
+app.use('/livros', livrosRoutes);         // <--- Tudo de livro começa com /livros
+app.use('/transacoes', transacoesRoutes); // <--- Tudo de transação começa com /transacoes
 
 module.exports = app;

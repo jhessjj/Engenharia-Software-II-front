@@ -1,18 +1,16 @@
+// backend/src/db.js
 const mysql = require('mysql2');
 
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'P3dr005!',
-  database: 'BookShare'
+const pool = mysql.createPool({
+    host: 'localhost',
+    user: 'root',      
+    password: 'P3dr005!', // <--- CONFIRA SUA SENHA
+    database: 'bookshare',
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 0
 });
 
-connection.connect((err) => {
-  if (err) {
-    console.error('Erro ao conectar ao MySQL:', err);
-    return;
-  }
-  console.log('Banco MySQL conectado com sucesso!');
-});
-
-module.exports = connection;
+// A MÁGICA ESTÁ AQUI EMBAIXO:
+// Temos que exportar com .promise() para poder usar o 'await' no controller
+module.exports = pool.promise();

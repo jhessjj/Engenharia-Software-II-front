@@ -1,44 +1,60 @@
+document.addEventListener('DOMContentLoaded', () => {
+    // Pega o formulário pelo ID que acabamos de adicionar
+    const form = document.getElementById('formAddLivro');
 
-const form = document.querySelector('.formulario');
+    form.addEventListener('submit', async (event) => {
+        event.preventDefault();
 
-// quando o formulario for enviado
-form.addEventListener('submit', (event) => {
-  event.preventDefault(); // impede o reload da pagina
+        // 1. Verifica se tem usuário logado
+        const idUsuario = localStorage.getItem('userId');
+        
+        if (!idUsuario) {
+            alert("Sessão expirada. Faça login novamente.");
+            window.location.href = 'login.html';
+            return;
+        }
 
-  // pega os valores dos campos
-  const titulo = document.querySelector('#titulo').value.trim();
-  const local = document.querySelector('#local').value.trim();
-  const telefone = document.querySelector('#telefone').value.trim();
-  const tipo = document.querySelector('#tipo').value;
-  const foto = document.querySelector('#foto').value.trim() || 'semcapa.jpg'; // imagem padrao caso vazio
+        // 2. Captura os dados (usando os IDs do SEU HTML)
+        const titulo = document.getElementById('titulo').value;
+        const local = document.getElementById('local').value;     // No HTML é 'local'
+        const telefone = document.getElementById('telefone').value;
+        const tipo = document.getElementById('tipo').value;
+        const foto = document.getElementById('foto').value;       // No HTML é 'foto'
 
-  // verificacao simples
-  if (!titulo || !local || !telefone) {
-    alert('Por favor, preencha todos os campos obrigatórios.');
-    return;
-  }
+        // 3. Monta o objeto com os nomes que o BANCO DE DADOS espera
+        const dadosLivro = {
+            titulo: titulo,
+            localizacao: local,           // Envia 'local' como 'localizacao'
+            telefone_contato: telefone,   // Envia como 'telefone_contato'
+            tipo: tipo,
+            url_capa: foto,               // Envia 'foto' como 'url_capa'
+            id_responsavel: idUsuario
+        };
 
-  // cria o objeto do novo livro
-  const novoLivro = {
-    titulo: titulo,
-    localizacao: local,
-    contato: telefone,
-    tipo: tipo,
-    imagem: foto
-  };
+        console.log("Enviando para o servidor:", dadosLivro);
 
-  // recupera os livros existentes (ou cria uma lista vazia)
-  const livrosSalvos = JSON.parse(localStorage.getItem('meusLivros')) || [];
+        try {
+            const response = await fetch('http://localhost:3000/livros', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(dadosLivro)
+            });
 
-  // adiciona o novo livro
-  livrosSalvos.push(novoLivro);
+            const resultado = await response.json();
 
-  // salva no localStorage
-  localStorage.setItem('meusLivros', JSON.stringify(livrosSalvos));
+            if (response.ok) {
+                alert('Livro adicionado com sucesso!');
+                window.location.href = 'addlivro.html'; // Volta para a lista
+            } else {
+                alert('Erro ao salvar: ' + resultado.message);
+                console.error(resultado);
+            }
 
-  // confirmacaao visual
-  alert('📚 Livro adicionado com sucesso!');
-
-  // redireciona para a pagina 
-  window.location.href = 'addlivro.html';
+        } catch (error) {
+            console.error('Erro na conexão:', error);
+            alert('Erro ao conectar com o servidor.');
+        }
+    });
 });
