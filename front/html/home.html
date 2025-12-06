@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/home.css">
+  <title>Livros Disponíveis</title>
+</head>
+<body>
+  <header> <h1>📚Livros Disponiveis</h1>
+        <nav>
+            <a href="home.html">Home</a>
+            <a href="addlivro.html">Meus Livros</a>
+            <a href="historico.html" >Histórico</a>
+        </nav>
+</header>
+  <div class="container">
+    <aside class="filtros">
+      <h3>Filtros</h3>
+      <label for="cidade">Cidade</label>
+      <input type="text" id="cidade" placeholder="Ex: Picos - PI">
+      <label for="genero">Gênero</label>
+      <select id="genero">
+        <option>Todos</option><option>Romance</option><option>Fantasia</option><option>Terror</option>
+      </select>
+      <label for="tipo">Tipo de ação</label>
+      <select id="tipo">
+        <option>Todos</option>
+        <option>Troca</option>
+        <option>Empréstimo</option>
+      </select>
+    </aside>
+
+    <main class="conteudo">
+      <div class="busca">
+        <input type="text" placeholder="🔍 Buscar livros...">
+        <button>Pesquisar</button>
+      </div>
+
+      <div class="lista-livros">
+        
+      </div>
+    </main>
+  </div>
+<button id="btn-sair">Sair</button>
+  <script src="../js/home.js"></script>
+
+</body>
+</html>

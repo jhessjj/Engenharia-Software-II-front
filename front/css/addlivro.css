@@ -1,0 +1,154 @@
+ *{
+  margin: 0;
+   padding: 0; 
+   box-sizing: border-box; 
+  
+}
+    body{
+      background: linear-gradient(135deg, #e9d5ff, #f5f3ff);
+      color: #2c3e50;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      font-family:cursive;
+    }
+
+    header{
+      color: #fff;
+      text-align: center;
+      font-size: 1.5rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      background-color: #bca4e3;
+      padding: 20px;
+      text-align: center;
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+
+    }
+     header h1{
+      margin: 0;
+      font-size: 2.5rem;
+      text-shadow:0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    nav a{
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 500;
+    margin-left: 20px;
+    
+   
+}
+
+nav a:hover{
+    text-decoration: underline;
+    color: #2c3e50;
+}
+
+main{
+      flex: 1;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 20px;
+    }
+
+
+ .livro{
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 15px;
+      text-align: center;
+      transition: transform 0.2s;
+    }
+
+
+.livro:hover{ 
+        transform: translateY(-5px); 
+    }
+
+.livro img{
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+.livro h4{ 
+    color: #2c3e50;
+    margin-bottom: 5px; 
+}
+
+.livro p{ 
+        color: #555; 
+        font-size: 0.9rem; 
+        margin-bottom: 5px; 
+    }
+
+
+.botoes{
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+    }
+
+
+    .botoes button{
+      border: none;
+      border-radius: 8px;
+      padding: 6px 12px;
+      color: white;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background 0.3s;
+    }
+
+
+.editar{ background:
+     #27ae60; 
+    
+    }
+
+.editar:hover{ 
+    
+    background: #219150; 
+    }
+.remover{ 
+     background: #e74c3c; 
+    
+    }
+.remover:hover{ 
+        background: #c0392b; 
+    }
+
+   
+.btn-add{
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: #9b59b6;
+      color: white;
+      font-size: 1.5rem;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: transform 0.2s;
+    }
+
+    .btn-add:hover{
+         transform: scale(1.1);
+         
+         background: #7d3cb5; 
+        
+        }
+
+
+ 

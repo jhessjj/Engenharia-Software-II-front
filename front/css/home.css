@@ -1,0 +1,187 @@
+  *{ 
+    margin: 0; 
+    padding: 0;
+    box-sizing: border-box; 
+    font-family: cursive;
+  }
+    body{
+      background: linear-gradient(135deg, #e9d5ff, #f5f3ff);
+      color: #2c3e50;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header{
+      color: #fff;
+      text-align: center;
+      font-size: 1.5rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      background-color: #bca4e3;
+      padding: 20px;
+      text-align: center;
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+
+    }
+
+    header h1{
+      margin: 0;
+      font-size: 2.5rem;
+      text-shadow:0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    nav a{
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 500;
+    margin-left: 20px;
+    
+   
+}
+
+nav a:hover{
+    text-decoration: underline;
+    color: #2c3e50;
+}
+    .container{
+      display: flex;
+      flex: 1;
+      padding: 20px;
+      gap: 20px;
+    }
+
+    .filtros{
+      width: 220px;
+      background: white;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      height: fit-content;
+    }
+    .filtros h3{
+      color: #9b59b6;
+      margin-bottom: 10px;
+    }
+    .filtros label{
+      display: block;
+      margin-top: 10px;
+      font-size: 0.9rem;
+    }
+    .filtros input, .filtros select{
+      width: 100%;
+      padding: 8px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-top: 5px;
+    }
+    .conteudo{
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .busca{
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .busca input{
+      flex: 1;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
+    .busca button{
+      background-color: rgba(88, 88, 209, 0.781);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .lista-livros{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 20px;
+    }
+    .livro{
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 15px;
+      text-align: center;
+      transition: transform 0.2s;
+    }
+    .livro:hover{ 
+      transform: translateY(-5px);
+     }
+
+    
+    .livro img{
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+    .livro h4{ 
+      color: #2c3e50; 
+      margin: 5px 0; 
+    }
+    .livro p{ 
+      color: #555; 
+      font-size: 0.9rem; 
+    }
+    .livro .botoes{
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .livro button{
+      border: none;
+      border-radius: 8px;
+      padding: 8px 12px;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .btn-empréstimo { 
+      background:rgb(88, 88, 209);; 
+    }
+    .btn-empréstimo:hover{
+       background: #564aaf;
+     }
+    .btn-troca{ 
+      background: #9b59b6; 
+    }
+    .btn-troca:hover{
+       background: #7d3cb5; 
+      }
+#btn-sair{
+    padding: 6px 14px;
+    margin-bottom: 10px;
+    margin: 15px;
+    width: 80px;
+    background: rgba(182, 51, 51, 0.634);
+    color: white;
+    font-size: 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s;
+    box-shadow: 0px 2px 4px rgba(0,0,0,0.15);
+}
+
+#btn-sair:hover{
+    background: #3b7cc0;
+    transform: scale(1.05);
+}
+
+#btn-sair:active{
+    transform: scale(0.97);
+}
+

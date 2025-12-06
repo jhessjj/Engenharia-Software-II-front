@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/addlivro2.css">
+  <title>Adicionar Livro</title>
+</head>
+<body>
+
+  <header>
+    <h1>➕Adicionar Novo Livro</h1>
+    <nav>
+            <a href="home.html">Home</a>
+            <a href="addlivro.html">Meus Livros</a>
+            <a href="historico.html" >Histórico</a>
+        </nav>
+    </nav>
+  </header>
+
+  <main class="form-container">
+    <form class="formulario">
+      <h3>Adicionar Livro</h3>
+
+      <div class="campo">
+        <label for="titulo">Título do Livro</label>
+        <input type="text" id="titulo" placeholder="Ex: O Pequeno Príncipe">
+      </div>
+
+      <div class="campo">
+        <label for="local">Localização</label>
+        <input type="text" id="local" placeholder="Ex: Picos - PI">
+      </div>
+
+      <div class="campo">
+        <label for="telefone">Telefone para Contato</label>
+        <input type="text" id="telefone" placeholder="(XX) XXXXX-XXXX">
+      </div>
+
+      <div class="campo">
+        <label for="tipo">Tipo</label>
+        <select id="tipo">
+          <option value="Empréstimo">Empréstimo</option>
+          <option value="Troca">Troca</option>
+        </select>
+      </div>
+
+      <div class="campo">
+        <label for="foto">URL da Capa (opcional)</label>
+        <input type="text" id="foto" placeholder="https://...">
+      </div>
+
+      <div class="botoes-form">
+        <button type="submit" class="salvar">Salvar</button>
+        <a href="addlivro.html" class="cancelar">Cancelar</a>
+      </div>
+    </form>
+  </main>
+  <script src="../js/addlivro2.js"></script>
+
+</body>
+</html>

@@ -1,3 +1,11 @@
+:root{
+   --corprincipal: #b295d4;
+   --corsecundaria: #6c4ab6;
+   --hovercor: #5a3d96;
+   --fundos: #ffffff;
+   --font: cursive;
+}
+
 *{
   margin: 0;
   padding: 0;

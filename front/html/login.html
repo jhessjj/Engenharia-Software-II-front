@@ -4,32 +4,35 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bookshare - Login</title>
-  <link rel="stylesheet" href="login.css">
+  <link rel="stylesheet" href="../css/login.css">
 </head>
 <body>
   <div class="container">
     
     <div class="lado-esquerdo">
-  <hr/>
-      <img src="estante.png" alt="">
       <h2>Faça seu login e descubra<br>as possibilidades do<br>mundo da leitura</h2>
 
       <div class="login-box">
         <h3>Login</h3>
-        <form>
-          <input type="text" placeholder="Usuário" required>
-          <input type="password" placeholder="Senha" required>
+
+        <!-- FORMULÁRIO CORRETO -->
+        <form id="formLogin">
+          <input type="text" id="user" placeholder="Usuário" required>
+          <input type="password" id="senha" placeholder="Senha" required>
           <button type="submit">Entrar</button>
         </form>
-        <p>Não é cadastrado? <a href="#">Crie sua conta</a></p>
+
+        <p>Não é cadastrado? <a href="cadastro.html">Crie sua conta</a></p>
       </div>
     </div>
 
     <div class="lado-direito">
       <h1>Bookshare</h1>
-      <img src="image.png" alt="Livro aberto">
+      <img src="/img/image.png" alt="Livro aberto">
     </div>
 
   </div>
+
+  <script src="/front/js/login.js"></script>
 </body>
 </html>
